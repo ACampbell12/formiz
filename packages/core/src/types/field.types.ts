@@ -84,16 +84,19 @@ export interface FieldState {
   isEnabled: boolean;
 }
 
-export interface UseFieldValues {
+export interface ExposedField {
   errorMessage?: string | undefined;
   errorMessages?: (string | undefined)[];
-  id: string;
   isPristine: boolean;
-  isSubmitted: boolean;
   isValid: boolean;
   isValidating: boolean;
-  setValue(value: FieldValue): void;
   value: FieldValue;
   valueDebounced: FieldValue;
   resetKey: number;
+}
+
+export interface UseFieldValues extends ExposedField {
+  setValue(value: FieldValue): void;
+  isSubmitted: boolean;
+  id: string;
 }
